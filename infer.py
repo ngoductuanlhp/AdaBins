@@ -144,8 +144,11 @@ class InferenceHelper:
             final = (final * self.saving_factor).astype('uint16')
             basename = os.path.basename(f).split('.')[0]
             save_path = os.path.join(out_dir, basename + ".png")
-
-            Image.fromarray(final).save(save_path)
+            final = np.squeeze(final)
+            final = np.squeeze(final)
+            viz = Image.fromarray(final)
+            # viz.show()
+            viz.save(save_path)
 
 
 if __name__ == '__main__':
